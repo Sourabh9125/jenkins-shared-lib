@@ -7,6 +7,6 @@ def call(Map config= [:]){
     echo "docker build image : ${imageName}:${imageTag} using ${dockerfile} "
 
     sh """
-       docker build -t ${imageName}:${imageTag} -t ${imageName}:latest -f ${dockerfile} ${context}
+       docker build -t ${imageName}:${imageTag} -f ${dockerfile} ${context}
        """
 }
