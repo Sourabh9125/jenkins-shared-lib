@@ -1,4 +1,4 @@
-def call(Map config=[:]){
+def call(Map config= [:]){
      def credentialsId = config.credentialsId ?: error "please provide credentialsId"
      def imageName = config.imageName ?: error "give the image name"
      def imageTag = config.imageTag ?: "latest"
