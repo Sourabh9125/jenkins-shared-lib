@@ -4,9 +4,9 @@ def call(Map config= [:]){
     def context = config.context ?: '.'
     def dockerfile = config.dockerfile ?: 'Dockerfile'
 
-    echo "docker build -t ${imageName}:${imageTag} ${dockerfile} "
+    echo "docker build image : ${imageName}:${imageTag} using ${dockerfile} "
 
     sh """
-       docker build -t ${imageName}:${imageTag} -f ${dockerfile} ${context}
+       docker build -t ${imageName}:${imageTag} -t ${imageName}:latest -f ${dockerfile} ${context}
        """
 }
