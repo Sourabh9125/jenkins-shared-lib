@@ -6,10 +6,11 @@
 def call(Map config = [:]) {
     def imageTag = config.imageTag ?: error("Image tag is required")
     def imageName = config.imageName ?: error("required image name")
+    def imageMigration = config.imageMigration ?: error("required image name")
     def manifestsPath = config.manifestsPath ?: 'kubernetes'
     def gitCredentials = config.gitCredentials ?: 'github-credentials'
-    def gitUserName = config.gitUserName ?: 'Jenkins CI'
-    def gitUserEmail = config.gitUserEmail ?: 'jenkins@example.com'
+    def gitUserName = config.gitUserName ?: 'Sourabh9125'
+    def gitUserEmail = config.gitUserEmail ?: 'lodhisaurabh9125@gmail.com'
     def dockerHubUserName = config.dockerHubUserName ?: "sourabhlodhi"
     
     echo "Updating Kubernetes manifests with image tag: ${imageTag}"
@@ -32,7 +33,7 @@ def call(Map config = [:]) {
             
             # Update migration job if it exists
             if [ -f "${manifestsPath}/12-migration-job.yaml" ]; then
-                sed -i "s|image: ${dockerHubUserName}/${imageName}:.*|image: ${dockerHubUserName}/${imageName}:${imageTag}|g" ${manifestsPath}/12-migration-job.yaml
+                sed -i "s|image: ${dockerHubUserName}/${imageMigration}:.*|image: ${dockerHubUserName}/${imageMigration}:${imageTag}|g" ${manifestsPath}/12-migration-job.yaml
             fi
             
             # Ensure ingress is using the correct domain
