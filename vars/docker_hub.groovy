@@ -7,7 +7,7 @@ def call(Map config= [:]){
                 usernameVariable: "dockerHubUser",
                 passwordVariable: "dockerHubPass")]){
             sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-            sh "docker image tag ${env.dockerHubUser}/${imageName} ${env.dockerHubUser}/${imageName}:${imageTag}"
+          //  sh "docker image tag ${env.dockerHubUser}/${imageName} ${env.dockerHubUser}/${imageName}:${imageTag}"
             sh "docker push ${env.dockerHubUser}/${imageName}:${imageTag}"
         }
 }
